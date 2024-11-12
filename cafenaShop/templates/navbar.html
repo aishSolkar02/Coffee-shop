@@ -1,0 +1,43 @@
+{% load static %}
+<!-- navbar section starts  -->
+
+<header class="header">
+
+    <a href="#" class="logo">
+        <img src="{% static 'images/logo.png' %} "alt="">
+    </a>
+
+    <nav class="navbar">
+        {% comment %} <a href="#home">home</a> {% endcomment %}
+        {% comment %} <a href="#about">about</a> {% endcomment %}
+        <a href="{% url 'services' %}">Services</a>
+        <a href="#products">products</a>
+        {% comment %} <a href="#review">review</a> {% endcomment %}
+        {% comment %} <a href="#contact">contact</a> {% endcomment %}
+        {% comment %} <a href="#blogs">blogs</a> {% endcomment %}
+    </nav>
+
+
+    <form class="d-flex w-25" action="{% url 'search' %}">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+        <button class="btn btn-dark" type="submit">Search</button>
+      </form>
+
+
+      {% if request.user.first_name %}
+      <a class="btn btn-dark mx-2" href="{% url 'login' %}" role="button">{{request.user.first_name}}</a>
+      <a class="btn btn-dark" href="{% url 'logout' %}" role="button" id="button">Logout</a>
+      
+      
+      {% else %}
+     
+      <a class=" btn btn-dark mx-2" href="{% url 'register' %}" role="button">Register</a>
+      <a class="btn btn-dark mx-2" href="{% url 'login' %}" role="button">Login</a>
+      {% endif %}
+
+
+</header>
+
+<!-- navbar section ends -->
+
+

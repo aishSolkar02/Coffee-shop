@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="box-container">
+
+    <div class="box">
+    
+     
+    {% include 'card.html' with s=service %}
+    </div>
+</div>
+
+{% endblock %}

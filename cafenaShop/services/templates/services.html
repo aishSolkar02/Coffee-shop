@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <div class="box-container"> 
+   <div class="box"> 
+{% for service in services %}
+  {% with username="aish"%}
+   {% include 'card.html' with s=service only %}
+  {% endwith %}
+{% endfor %}
+</div>
+</div>
+{% endblock %}
