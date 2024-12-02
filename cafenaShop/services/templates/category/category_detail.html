@@ -1,16 +1,16 @@
-{% extends 'base.html'%}
-
+{% extends 'base.html' %}
 {% block content %}
-<h1>hey</h1>
+<section class="menu" id="menu">
 
- {% comment %} <p>{{category_obj}}</p>  {% endcomment %}
-  <section class="menu" id="menu">
+    <h1 class="heading"> our <span>menu</span> </h1>
 <div class="box-container">
+    
+
   {% for service in category_obj.service_set.all %}
 
-     {% include 'card.html' with s=service %}
+  {% include 'card.html' with s=service %}
 
-  {% endfor%}
-    </div>
+{% endfor%}
+</div>
 </section>
-{% endblock%}
+{% endblock %}

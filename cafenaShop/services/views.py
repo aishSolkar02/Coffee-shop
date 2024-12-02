@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Service,Category
-from django.views.generic import ListView,DetailView
+from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
+from django.utils.decorators import method_decorator
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 
@@ -27,16 +29,8 @@ def peru_Whole_Bean(request):
 def search(request):
     keyword=request.GET.get("keyword")
     services=Service.customManager.all().filter(menu_name__icontains=keyword)
-    return render(request,"services.html",{"services":services})
+    return render(request,"services/service_list.html",{"object_list":services})
 
-def services(request):
-
-    return render(request,"services.html")
-
-
-def service_list(request):
-    services=Service.objects.all()
-    return render(request,'services.html',{'services':services})
 
 class ServiceListView(ListView):
     model=Service
@@ -51,3 +45,23 @@ class CategoryDetailView(DetailView):
     template_name="category/category_detail.html"
     slug_field="category_slug"
     context_object_name="category_obj"
+
+
+    # crud===>
+@method_decorator(staff_member_required,name="dispatch")
+class ServiceCreateView(CreateView):
+    model= Service
+    fields="__all__"
+    success_url="/services"
+
+@method_decorator(staff_member_required,name="dispatch")
+class ServiceUpdateView(UpdateView):
+    model =Service
+    fields="__all__"
+    success_url="/services"
+
+#+=================================================
+@method_decorator(staff_member_required,name="dispatch")
+class ServiceDeleteView(DeleteView):
+    model=Service
+    success_url="/services"

@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<section class="menu" id="menu">
+<h1 style="color: red;"> Do you want to delete product..?</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" value="yes" classs="fs-1">
+  </form>
+
+{% comment %} <section class="menu" id="menu"> {% endcomment %}
+<div class="box-container">
+        {% include 'card.html' with s=service %}
+</div>
+</section>
+
+       {% comment %} <p style="color: red;"> Do you want to delete product..?</p>
+      
+      
+      <br>
+      <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="yes">
+      </form>
+      <div class="box-container">
+    
+
+        {% include 'card.html' with s=service %}
+    </div> {% endcomment %} 
+{% endblock %}

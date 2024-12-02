@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+
+
+<h1 class=" text-white mt-lg-5">Cart Details </h1>
+      
+      <h1 class="card-title fw-bold text-white  mb-lg-5"> Total: $ {{total}}</h1>
+<div class="container" >
+
+  <div class="row">
+
+    <div class="col">
+
+     <!-- <hr class="border border-white"> -->
+   {% for cartitem in cartitems %}
+   <div class="card mb-3 p-2 w-75 p-md-2 pe-3 g-5 ps-2">
+    <div class="row g-5 me-2">
+      <div class="col-md-4">
+        <img src="{{cartitem.services.menu_image.url}}" class="img-fluid w-100 rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title fw-bold fs-3">{{cartitem.services}}</h5>
+          <p class="card-text fw-bold fs-3">Quantity: {{cartitem.quantity}}</p>
+          <p class="card-text fw-bold fs-3"><small class="text-muted">Rs. $ {{cartitem.services.menu_price}}</small></p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+          <p class="card-text fs-5">{{cartitem.services.menu_description}}</p> 
+  
+          <form action="{% url 'update-cart' cartitem.id %}">
+            <button type="button" class="btn  col-1 p-0" onclick="updateQuantity(-1,{{cartitem.id}})">-</button>
+            <input type="number" class="btn  col-1 p-0" name="quantity" id="quantity{{cartitem.id}}" value="{{cartitem.quantity}}" min="1" max="10">
+            <button type="button" class="btn  col-1 p-0"onclick="updateQuantity(+1,{{cartitem.id}})">+</button>
+            <input class="btn btn-dark col-5 p-1 " type="submit" value="update cart">
+            </form>
+            <a class="btn btn-dark col-6 p-1" href="{% url 'delete-cartitem' cartitem.id %}" role="button">Delete</a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+   {% endfor %}
+  </div>
+
+  <div class="container col mt-lg-2">
+   <table class="table fs-4 p-1 border border-white" class="col-float-end" >
+    <thead class="table-dark fs-3 mt-lg-5">
+    <div hidden>hey</div>
+     <tr>
+     <th>Id</th>
+     <th>Product Name</th>
+     <th>Price</th>
+     <th>Quantity</th>
+     <th>total</th>
+    </tr>
+    </thead>
+
+    <tbody>
+      {% for cartitem in cartitems %}
+      <tr class="fs-3 p-5">
+      <td class="card-title fw-bold text-white">{{cartitem.services.id}}</td>
+      <td class="card-title fw-bold text-white">{{cartitem.services.menu_name}}</td>
+      <td class="card-title fw-bold text-white">{{cartitem.services.menu_price}}</td>
+      <td class="card-title fw-bold text-white">{{cartitem.quantity}}</td>
+      <td class="card-title fw-bold text-white">{{cartitem.quantity|multiply:cartitem.services.menu_price}}</td>
+    
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <br>
+  <a class="btn btn-success col-2 p-1" href="{% url 'check-out' %}" role="button">checkout</a>
+  </div>
+</div>
+</div>
+
+{% endblock %}

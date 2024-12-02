@@ -29,11 +29,12 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home),
+    path('',views.home,name="home"),
     path('login/',views.user_login,name="login"),
     path('register/',views.register,name="register"),
     path('logout/',views.user_logout,name="logout"),
-    path('services/',include('services.urls'))
+    path('services/',include('services.urls')),
+    path('cart/',include('cart.urls'))
 ]
 
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

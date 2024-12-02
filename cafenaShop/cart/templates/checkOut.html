@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container border border-white mt-lg-5 m-15 p-4 fs-1 w-75 justify-content-center">
+    <h4 class="bg-dark text-white p-3 mb-5 text-center rounded-pill fs-1">Order</h4>
+    <form action="" method="post">
+        {% csrf_token %}
+
+      {% for field in form %}
+        <div class="mb-5 text-white fs-2 fw-bold">
+            {{field.label_tag}}
+            {{field}}
+        </div>
+     {% endfor %}
+
+        <input class="btn btn-white fs-3" type="submit" value="checkout">
+    </form>
+</div>
+
+{% endblock%}

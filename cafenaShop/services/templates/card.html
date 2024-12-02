@@ -2,12 +2,28 @@
 
     
 <div class="box-container">
-
+<a href="{% url 'service-detail' s.id %}">
     <div class="box">
-        <img src="{{s.menu_image.url}}" alt="">
+        <img src="{{s.menu_image.url}}" alt=""></a>
         <h3>{{s.menu_name}}</h3>
-        <div class="price">$ {{s.menu_price}} <span>$20.99</span></div>
+        <div class="price">$ {{s.menu_price}}/-</div>
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
         <p>{{s.menu_description}}</p>
-        <a href="#" class="btn">add to cart</a>
+
+        <form action="{% url 'add-to-cart' s.id %}">
+            <button class="btn  col-1 p-0" onclick="updateQuantity(-1,{{s.id}})" type="button">-</button>
+            <input class="btn  col-4 p-0"  type="number" name="quantity" id="quantity{{s.id}}" value="1" min="1" max="50">
+            <button class="btn col-1 p-0" onclick="updateQuantity(+1,{{s.id}})" type="button">+</button>
+            <br>
+            <input class="btn btn-white" type="submit" value="add to cart">
+            </form>
+            <p>{{username}}</p>
     </div>
 </div>
+

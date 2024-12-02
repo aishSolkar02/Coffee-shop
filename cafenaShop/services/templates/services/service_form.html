@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container border border-white m-5 p-4 text-white fw-bold">
+    {% comment %} <h4 class="bg-white text-dark p-3 mb-3 text-center fs-2">Update Here..</h4> {% endcomment %}
+<form method="post" enctype="multipart/form-data" class="text-white fs-4">
+    {% csrf_token %}
+    {% for i in form%}
+<br>
+        {{i.label_tag}}
+        {{i}}
+        <br>
+        <br>
+
+    {% endfor%}
+    <input class=" btn bg-white text-dark" type="submit">
+    {%csrf_token%}
+</form>
+</div>
+
+{% endblock %}

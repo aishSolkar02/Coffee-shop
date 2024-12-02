@@ -32,20 +32,20 @@
         </a>
 
         <nav class="navbar">
-            {% comment %} <a href="#home">home</a> {% endcomment %}
-            {% comment %} <a href="#about">about</a> {% endcomment %}
+            <a href="#home">home</a>
+            <a href="#about">about</a>
             <a href="{% url 'services' %}">Services</a>
             <a href="#Categaries">Categary</a>
-            {% comment %} <a href="#review">review</a> {% endcomment %}
-            {% comment %} <a href="#contact">contact</a> {% endcomment %}
+            <a href="#contact">contact</a>
 
         </nav>
 
 
-        <form class="d-flex w-25" action="{% url 'search' %}">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
-            <button class="btn btn-dark" type="submit">Search</button>
-          </form>
+        <form class="d-flex w-25 col-3 p-0 " action="{% url 'search' %}">
+        <input class="form-control mt-3 me-2 btn-lg" type="search" placeholder="Search" aria-label="Search" name="keyword">
+        <button class="btn btn-dark" type="submit">Search</button>
+      </form>
+
 
 
 
@@ -61,7 +61,11 @@
 
         <div class="icons">
 
-            <div class="fas fa-shopping-cart" id="cart-btn"></div>
+            <a href="{% url 'cart' %}"><div class="fas fa-shopping-cart" id="cart-btn">
+                {% if count %}
+                <span class="badge bg-danger fs-5 rounded-pill">{{count}}</span></a>
+              {% endif %}
+            </div></a> 
         </div>
 
     </header>
@@ -121,7 +125,7 @@
 
             <div class="box">
                 <div class="icons">
-                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="{% url 'cart' %}" class="fas fa-shopping-cart"></a>
                     <a href="#" class="fas fa-heart"></a>
                     <a href="#" class="fas fa-eye"></a>
                 </div>
@@ -145,12 +149,12 @@
 
             <div class="box">
                 <div class="icons">
-                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="{% url 'cart' %}" class="fas fa-shopping-cart"></a>
                     <a href="#" class="fas fa-heart"></a>
                     <a href="#" class="fas fa-eye"></a>
                 </div>
                 <div class="image">
-                    <a href="{% url 'category-detail' slug='culumbia-Whole-Bean'%}">
+                    <a href="{% url 'category-detail' slug='culumbia-Whole-Bean' %}">
                         <img src="{% static 'images/product-2.png'%}" alt=""></a>
                 </div>
                 <div class="content">
@@ -169,7 +173,7 @@
 
             <div class="box">
                 <div class="icons">
-                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="{% url 'cart' %}" class="fas fa-shopping-cart"></a>
                     <a href="#" class="fas fa-heart"></a>
                     <a href="#" class="fas fa-eye"></a>
                 </div>
@@ -289,59 +293,6 @@
 
     <!-- contact section ends -->
 
-    <!-- blogs section starts  -->
-
-    <section class="blogs" id="blogs">
-
-        <h1 class="heading"> our <span>blogs</span> </h1>
-
-        <div class="box-container">
-
-            <div class="box">
-                <div class="image">
-                    <img src="{% static 'images/blog-1.jpeg'%}" alt="">
-                </div>
-                <div class="content">
-                    <a href="#" class="title">tasty and refreshing coffee</a>
-                    <span>by admin / 05st may, 2024</span>
-                    <p>Discover the delight of our tasty and refreshing coffee, crafted to elevate your daily routine.
-                    </p>
-                    <a href="#" class="btn">read more</a>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="{% static 'images/blog-2.jpeg'%}" alt="">
-                </div>
-                <div class="content">
-                    <a href="#" class="title">Brewing Techniques</a>
-                    <span>by admin / 11st October, 2024</span>
-                    <p>Explore various brewing methods like French press, pour-over, and espresso, offering tips and
-                        tricks for achieving the perfect cup at home.</p>
-                    <a href="#" class="btn">read more</a>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="{% static 'images/blog-3.jpeg'%}" alt="">
-                </div>
-                <div class="content">
-                    <a href="#" class="title">coffee Origins</a>
-                    <span>by admin / 21st November, 2024</span>
-                    <p>Coffee Origins: Dive into the world of coffee by highlighting different coffee-growing regions,
-                        their unique flavor profiles, and the stories behind the bean</p>
-                    <a href="#" class="btn">read more</a>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- blogs section ends -->
-
     <!-- footer section starts  -->
 
     <section class="footer">
@@ -355,13 +306,13 @@
         </div>
 
         <div class="links">
-            <a href="#">home</a>
-            <a href="#">about</a>
-            <a href="#">menu</a>
-            <a href="#">products</a>
-            <a href="#">review</a>
-            <a href="#">contact</a>
-            <a href="#">blogs</a>
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="{% url 'services' %}">menu</a>
+            <a href="#Categaries">category</a>
+            <a href="#review">review</a>
+            <a href="#contact">contact</a>
+            
         </div>
 
         <div class="credit">created by <span>Aishwarya Solkar</span> | all rights reserved</div>

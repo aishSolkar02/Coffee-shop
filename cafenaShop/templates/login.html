@@ -3,14 +3,14 @@
 Login
 {% endblock %}
 {% block content %}
-<div class="container border border-white m-5 p-4 text-white w-75 fw-bold">
+<div class="container border border-white  mt-lg-5 m-15 p-4 fs-4 w-75 text-white">
     {% if message %}
     <div class="alert alert-danger" role="alert">
         {{message}}
       </div>
       {% endif %}
 
-    <h4 class="bg-dark text-white p-3 mb-3 text-center rounded-pill">Login Here</h4>
+    <h4 class="bg-dark text-white p-2 mb-3 fs-2 text-center rounded-pill">Login Here</h4>
     <form method="post">
         {% csrf_token %}
 

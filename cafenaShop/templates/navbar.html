@@ -8,18 +8,16 @@
     </a>
 
     <nav class="navbar">
-        {% comment %} <a href="#home">home</a> {% endcomment %}
-        {% comment %} <a href="#about">about</a> {% endcomment %}
-        <a href="{% url 'services' %}">Services</a>
-        <a href="#products">products</a>
-        {% comment %} <a href="#review">review</a> {% endcomment %}
-        {% comment %} <a href="#contact">contact</a> {% endcomment %}
-        {% comment %} <a href="#blogs">blogs</a> {% endcomment %}
+        <a href="{% url 'home' %}">home</a>
+            <a href="#about">about</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="">Categary</a>
+            <a href="#contact">contact</a>
     </nav>
 
 
-    <form class="d-flex w-25" action="{% url 'search' %}">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+    <form class="d-flex w-25 col-3 p-0 " action="{% url 'search' %}">
+        <input class="form-control mt-3 me-2 btn-lg" type="search" placeholder="Search" aria-label="Search" name="keyword">
         <button class="btn btn-dark" type="submit">Search</button>
       </form>
 
@@ -35,7 +33,14 @@
       <a class="btn btn-dark mx-2" href="{% url 'login' %}" role="button">Login</a>
       {% endif %}
 
+      <div class="icons">
 
+        <a href="{% url 'cart' %}"><div class="fas fa-shopping-cart" id="cart-btn">
+            {% if count %}
+            <span class="badge bg-danger fs-5 rounded-pill">{{count}}</span></a>
+          {% endif %}
+        </div></a> 
+    </div>
 </header>
 
 <!-- navbar section ends -->
